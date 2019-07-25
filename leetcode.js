@@ -74,3 +74,27 @@ var isPalindrome = function(x) {
     }
 };
 isPalindrome(1221)
+
+//take in roman numeral, return int
+
+function fromRoman(str) {  
+  var result = 0;
+  // the result is now a number, not a string
+  var decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  var roman = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
+  for (var i = 0;i<=decimal.length;i++) {
+      //roman[i] is the is X, and it is in the zero index at the first loop
+      //it is going to loop through and keep going up indexes until it finds one that is on the roman array and is at index 0 of the string
+    while (str.indexOf(roman[i]) === 0){
+        console.log(i)
+        console.log(roman[i])
+        //find the corrisponding decimal to the index of i, so for X it would be 10 on the first loop, assign it to result
+      result += decimal[i];
+        //then remove the value at index 0, thus making the loop run again if the new value at index 0 is in the roman array
+      str = str.replace(roman[i],'');
+    }
+  }
+  console.log( result);
+}
+
+fromRoman("III")
